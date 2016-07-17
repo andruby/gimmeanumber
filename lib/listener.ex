@@ -13,9 +13,9 @@ defmodule Gimmeanumber.Listener do
     IO.puts "Ignore tweets from myself"
   end
 
-  defp handle_event(server, %ExTwitter.Model.Tweet{user: %ExTwitter.Model.User{screen_name: screen_name}}) do
+  defp handle_event(server, %ExTwitter.Model.Tweet{id: tweet_id, user: %ExTwitter.Model.User{screen_name: screen_name}}) do
     IO.puts("Incoming tweet from #{screen_name}")
-    Gimmeanumber.Worker.tweet(server, screen_name)
+    Gimmeanumber.Worker.reply(server, [tweet_id: tweet_id, screen_name: screen_name])
   end
 
   defp handle_event(_server, event) do

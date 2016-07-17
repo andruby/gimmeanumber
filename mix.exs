@@ -14,7 +14,7 @@ defmodule Gimmeanumber.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger],
+    [applications: [:logger, :extwitter],
      mod: {Gimmeanumber, []}]
   end
 
@@ -28,6 +28,9 @@ defmodule Gimmeanumber.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:oauth, github: "tim/erlang-oauth"},
+      {:extwitter, "0.7.1"},
+    ]
   end
 end
